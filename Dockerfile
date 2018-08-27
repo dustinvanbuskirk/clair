@@ -21,6 +21,7 @@ ADD .   /go/src/github.com/coreos/clair/
 WORKDIR /go/src/github.com/coreos/clair/
 
 COPY config.example.yaml /config/config.yaml
+COPY wait-for-postgres.sh /wait-for-postgres.sh
 
 RUN apk add --no-cache git rpm xz && \
     go install -v github.com/coreos/clair/cmd/clair && \
