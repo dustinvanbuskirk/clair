@@ -27,3 +27,5 @@ RUN apk add --no-cache git rpm xz && \
     go install -v github.com/coreos/clair/cmd/clair && \
     mv /go/bin/clair /clair && \
     rm -rf /go /usr/local/go
+
+ENTRYPOINT ["/wait-for-postgres.sh"]
