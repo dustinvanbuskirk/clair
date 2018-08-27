@@ -19,7 +19,7 @@ RUN go build github.com/coreos/clair/cmd/clair
 
 FROM alpine:3.8
 COPY --from=build /go/src/github.com/coreos/clair/clair /clair
+COPY config.yaml.sample /config/config.yaml
 RUN apk add --no-cache git rpm xz ca-certificates dumb-init
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "/clair"]
-VOLUME /config
 EXPOSE 6060 6061
